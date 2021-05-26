@@ -1,17 +1,308 @@
 {% extends 'base.html' %}
 {% block content %}
-  <div class="container p-3 mr-auto">
-    <div class="row">
-      <div class="col-0 col-lg-0"></div>
-      <div class="col-12 col-lg-12 px-3 mx-1">
-        <div class="main-item">
-          <div class="main-item-top">
-            <h1>EDA PROJECT</h1>
-            <h3>주제: 남녀 임금 격차</h3>
+
+<div class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
+
+  <div class="jp-Cell-inputWrapper">
+    <div class="jp-InputPrompt jp-InputArea-prompt">
+    </div>
+    <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+      <h1
+        style="background: #A5ADA7; color:#E1E2DF; font-size: 50px; border: 8px solid #B68E7E; line-height: 1.6;">
+        <center>데이터 소개</center>
+      </h1>
+    </div>
+  </div>
+  <div class="jp-Cell-inputWrapper">
+    <div class="jp-InputPrompt jp-InputArea-prompt">
+    </div>
+    <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+      <ul>
+        <li>성별(Gender): 학생의 성별</li>
+        <li>인종/민족(Race/Ethnicity): 학생이 속한 인종 및 민족 그룹</li>
+        <li>부모의 교육수준(Parental Level of Education): 학생의 부모 최종 학력</li>
+        <li>점심 여부(Lunch): 학생이 점심을 챙겨먹는지 아닌지의 여부</li>
+        <li>예습 여부(Test Preparation Course): 학생이 시험을 준비했는가 안했는가</li>
+        <li>수학, 독해, 작문의 점수: 학생의 각 과목에 대한 점수</li>
+      </ul>
+
+    </div>
+  </div>
+  <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+    <div class="jp-Cell-inputWrapper">
+      <div class="jp-InputArea jp-Cell-inputArea">
+        <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
+        <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+          <div class="CodeMirror cm-s-jupyter">
+            <div class=" highlight hl-ipython3">
+              <pre><span></span><span class="c1"># import numpy as np</span>
+  <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+  <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+  <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+  <span class="o">%</span><span class="k">matplotlib</span> inline
+  </pre>
+            </div>
+
           </div>
         </div>
       </div>
     </div>
-    
+
   </div>
+  <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+    <div class="jp-Cell-inputWrapper">
+      <div class="jp-InputArea jp-Cell-inputArea">
+        <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
+        <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+          <div class="CodeMirror cm-s-jupyter">
+            <div class=" highlight hl-ipython3">
+              <pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;./StudentsPerformance.csv&quot;</span><span class="p">)</span>
+  </pre>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+    <div class="jp-Cell-inputWrapper">
+      <div class="jp-InputArea jp-Cell-inputArea">
+        <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
+        <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+          <div class="CodeMirror cm-s-jupyter">
+            <div class=" highlight hl-ipython3">
+              <pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+  </pre>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="jp-Cell-outputWrapper">
+
+
+      <div class="jp-OutputArea jp-Cell-outputArea">
+
+        <div class="jp-OutputArea-child">
+
+
+          <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[12]:</div>
+
+
+
+          <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult"
+            data-mime-type="text/html">
+            <div>
+              <style scoped>
+                .dataframe tbody tr th:only-of-type {
+                  vertical-align: middle;
+                }
+
+                .dataframe tbody tr th {
+                  vertical-align: top;
+                }
+
+                .dataframe thead th {
+                  text-align: right;
+                }
+              </style>
+              <table border="1" class="dataframe">
+                <thead>
+                  <tr style="text-align: right;">
+                    <th></th>
+                    <th>gender</th>
+                    <th>race/ethnicity</th>
+                    <th>parental level of education</th>
+                    <th>lunch</th>
+                    <th>test preparation course</th>
+                    <th>math score</th>
+                    <th>reading score</th>
+                    <th>writing score</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>0</th>
+                    <td>female</td>
+                    <td>group B</td>
+                    <td>bachelor's degree</td>
+                    <td>standard</td>
+                    <td>none</td>
+                    <td>72</td>
+                    <td>72</td>
+                    <td>74</td>
+                  </tr>
+                  <tr>
+                    <th>1</th>
+                    <td>female</td>
+                    <td>group C</td>
+                    <td>some college</td>
+                    <td>standard</td>
+                    <td>completed</td>
+                    <td>69</td>
+                    <td>90</td>
+                    <td>88</td>
+                  </tr>
+                  <tr>
+                    <th>2</th>
+                    <td>female</td>
+                    <td>group B</td>
+                    <td>master's degree</td>
+                    <td>standard</td>
+                    <td>none</td>
+                    <td>90</td>
+                    <td>95</td>
+                    <td>93</td>
+                  </tr>
+                  <tr>
+                    <th>3</th>
+                    <td>male</td>
+                    <td>group A</td>
+                    <td>associate's degree</td>
+                    <td>free/reduced</td>
+                    <td>none</td>
+                    <td>47</td>
+                    <td>57</td>
+                    <td>44</td>
+                  </tr>
+                  <tr>
+                    <th>4</th>
+                    <td>male</td>
+                    <td>group C</td>
+                    <td>some college</td>
+                    <td>standard</td>
+                    <td>none</td>
+                    <td>76</td>
+                    <td>78</td>
+                    <td>75</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+    <div class="jp-Cell-inputWrapper">
+      <div class="jp-InputArea jp-Cell-inputArea">
+        <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[16]:</div>
+        <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+          <div class="CodeMirror cm-s-jupyter">
+            <div class=" highlight hl-ipython3">
+              <pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+  <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+  </pre>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="jp-Cell-outputWrapper">
+
+
+      <div class="jp-OutputArea jp-Cell-outputArea">
+
+        <div class="jp-OutputArea-child">
+
+
+          <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+          <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+            <pre>(1000, 8)
+  </pre>
+          </div>
+        </div>
+
+        <div class="jp-OutputArea-child">
+
+
+          <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[16]:</div>
+
+
+
+
+          <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+            <pre>[&#39;gender&#39;,
+   &#39;race/ethnicity&#39;,
+   &#39;parental level of education&#39;,
+   &#39;lunch&#39;,
+   &#39;test preparation course&#39;,
+   &#39;math score&#39;,
+   &#39;reading score&#39;,
+   &#39;writing score&#39;]</pre>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+    <div class="jp-Cell-inputWrapper">
+      <div class="jp-InputArea jp-Cell-inputArea">
+        <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[19]:</div>
+        <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+          <div class="CodeMirror cm-s-jupyter">
+            <div class=" highlight hl-ipython3">
+              <pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+  </pre>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="jp-Cell-outputWrapper">
+      <div class="jp-OutputArea jp-Cell-outputArea">
+        <div class="jp-OutputArea-child">
+          <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+          <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+            <pre>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+  RangeIndex: 1000 entries, 0 to 999
+  Data columns (total 8 columns):
+   #   Column                       Non-Null Count  Dtype 
+  ---  ------                       --------------  ----- 
+   0   gender                       1000 non-null   object
+   1   race/ethnicity               1000 non-null   object
+   2   parental level of education  1000 non-null   object
+   3   lunch                        1000 non-null   object
+   4   test preparation course      1000 non-null   object
+   5   math score                   1000 non-null   int64 
+   6   reading score                1000 non-null   int64 
+   7   writing score                1000 non-null   int64 
+  dtypes: int64(3), object(5)
+  memory usage: 62.6+ KB
+  </pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="jp-Cell-inputWrapper">
+    <div class="jp-InputPrompt jp-InputArea-prompt">
+    </div>
+    <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+      <ul>
+        <li>위 데이터를 통해 볼때 5개의 범주형 칼럼과 3개의 숫자형 칼럼이 있음을 알수 있다.</li>
+        <li>또한 8개의 컬럼에는 모두 Null 값이 존재하지 않는다</li>
+      </ul>
+    </div>
+  </div>
+</div>
 {% endblock %}
